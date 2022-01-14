@@ -9,7 +9,12 @@ RSpec.describe Enigma do
     expect(@enigma).to be_instance_of Enigma
   end
 
-  # it '#has attributes' do
-  #   expect(@class_instance.i).to eq(i)
-  # end
+  it '#encrypt' do #FINAL GOAL
+    expected =  {
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+      }
+    expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
+  end
 end
