@@ -1,9 +1,6 @@
 require './spec_helper'
 
 RSpec.describe KeyGen do
-  before(:each) do
-
-  end
 
   it 'exists' do
     key_1 = KeyGen.new

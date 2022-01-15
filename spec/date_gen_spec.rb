@@ -1,9 +1,6 @@
 require './spec_helper'
 
 RSpec.describe DateGen do
-  before(:each) do
-
-  end
 
   it 'exists' do
     date = DateGen.new
