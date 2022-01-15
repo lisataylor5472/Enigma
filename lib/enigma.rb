@@ -1,19 +1,19 @@
-require 'keygen'
-require 'dategen'
-require 'offsetgen'
+require 'key_gen'
+require 'date_gen'
+require 'offset_gen'
 
 class Enigma
-  def initialize
-  end
+  # def initialize
+  # end
 
   def encrypt(message, key = nil, date = nil)
-    key_generator = KeyGen.new(key)
-    date_generator = DateGen.new(date)
-    # offset_genertor = OffsetGen.new
+    message_key = KeyGen.new(key)
+    message_date = DateGen.new(date)
+    offset = OffsetGen.new(date)
     encrypted = {}
     encrypted[:encryption] = "keder ohulw" #message
-    encrypted[:key] = key_generator.key
-    encrypted[:date] = date_generator.date
+    encrypted[:key] = message_key.key
+    encrypted[:date] = message_date.date
     encrypted
   end
 end
