@@ -1,15 +1,17 @@
 require 'keygen'
+require 'dategen'
 
 class Enigma
   def initialize
   end
 
   def encrypt(message, key = nil, date = nil)
-    @new_key = KeyGen.new(key)
+    key_generator = KeyGen.new(key)
+    date_generator = DateGen.new(date)
     encrypted = {}
     encrypted[:encryption] = "keder ohulw"
-    encrypted[:key] =  "02715"
-    encrypted[:date] =  "040895"
+    encrypted[:key] = key_generator.key
+    encrypted[:date] = date_generator.date
     encrypted
   end
 end

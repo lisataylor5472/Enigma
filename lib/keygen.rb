@@ -14,5 +14,4 @@ class KeyGen
       key
     end
   end
-
 end
