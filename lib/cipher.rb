@@ -3,13 +3,13 @@ class Cipher
 
   def initialize(message_key, message_date)
     @message_key = message_key
-    @message_date = message_date.to_i
+    @message_date = message_date
     @offsets = assign_offset
     @shift_key = nil
   end
 
   def offset_id
-    (@date ** 2).to_s.slice!(-4..-1)
+    (@message_date.to_i ** 2).to_s.slice!(-4..-1)
     #returns a string for use in offsets method below
   end
 
