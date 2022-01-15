@@ -9,7 +9,7 @@ class DateGen
 
   def generate_date(date)
     if date == nil
-      @date = Date.today.strftime("%m%d%y")
+      @date = Date.today.strftime("%d%m%y") #"DDMMYY"
     else
       date
     end

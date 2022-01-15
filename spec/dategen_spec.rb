@@ -17,7 +17,6 @@ RSpec.describe DateGen do
 
   it '#generate - returns todays date' do
     date = DateGen.new
-    expect(date.date.class).to be String
-    expect(date.date.length).to eq(6)
+    expect(date.date).to eq("150122")
   end
 end

@@ -3,4 +3,5 @@ SimpleCov.start
 
 require './lib/enigma'
 require './lib/keygen'
-# require './lib/class_name'
+require './lib/dategen'
+require './lib/offsetgen'
