@@ -2,5 +2,7 @@ require 'simplecov'
 SimpleCov.start
 
 require './lib/enigma'
-require './lib/keygen'
-# require './lib/class_name'
+require './lib/keyable'
+require './lib/datable'
+require './lib/cipher'
+require './lib/cipherable'

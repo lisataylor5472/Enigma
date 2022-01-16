@@ -1,15 +1,21 @@
-require 'keygen'
+require 'keyable'
+require 'datable'
+require 'cipher'
+# require 'cipherable'
 
 class Enigma
-  def initialize
-  end
+  include Keyable
+  include Datable
+  # include Cipherable
 
   def encrypt(message, key = nil, date = nil)
-    @new_key = KeyGen.new(key)
+    message_key = generate_msg_key(key)
+    message_date = generate_msg_date(date)
+    cipher = Cipher.new(message, message_key, message_date)
     encrypted = {}
-    encrypted[:encryption] = "keder ohulw"
-    encrypted[:key] =  "02715"
-    encrypted[:date] =  "040895"
+    encrypted[:encryption] = "keder ohulw" #cipher.cipher_message
+    encrypted[:key] = message_key
+    encrypted[:date] = message_date
     encrypted
   end
 end
