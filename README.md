@@ -1,17 +1,33 @@
 # ENIGMA
 
 Welcome to my Enigma Machine!
+Is uses a command line interface to run an encryption and decryption tool.
 
-It is a program that uses a command line interface to run an encryption and decryption tool.
 
-<hr />
-
-## HOW TO ‍- COMING SOON
+## HOW TO ‍USE
 
 Use the two runner files, `encrypt.rb` and `decrypt.rb` to execute
 encryption and decryption of a message contained in `message.txt`.
 
-<hr />
+- Enter your command line interface (CLI)
+- Ensure you have ruby installed - [ruby-install guide](https://www.ruby-lang.org/en/documentation/installation/)
+  - This repo was created using Ruby 2.7.2
+- Clone this repo - navigate to the enigma directory
+- Add a message within the `message.txt` file - it can be encased in `""` or not.
+#### To Encrypt
+- Enter the following into your CLI  <br>
+`$ ruby ./lib/encrypt.rb message.txt encrypted.txt`
+- It should return <br>
+`=> Created 'encrypted.txt' with the key <5 digit key> and date <DDMMYY>`
+- View the newly generated encrypted.txt file for the encrypted message.
+#### To Decrypt
+- Enter the following into your CLI  <br>
+- `$ ruby ./lib/decrypt.rb encrypted.txt decrypted.txt <5 digit key> <DDMMYY>`
+- It should return <br>
+`=> Created 'decrypted.txt' with the key <5 digit key> and date <DDMMYY>`
+- View the newly generated decrypted.txt file for the deciphered message.
+
+
 
 ## SELF-ASSESSMENT ✔️
 
