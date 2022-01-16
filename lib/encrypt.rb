@@ -1,7 +1,4 @@
 require_relative './enigma'
-# require_relative './keyable'
-require_relative './datable'
-require_relative './cipher'
 
 enigma = Enigma.new
 key = ARGV[2]
