@@ -1,6 +1,6 @@
-require 'keyable'
-require 'datable'
-require 'cipher'
+require_relative 'keyable'
+require_relative 'datable'
+require_relative 'cipher'
 
 class Enigma
   include Keyable

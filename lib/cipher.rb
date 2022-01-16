@@ -1,4 +1,4 @@
-require 'keyable'
+require_relative 'keyable'
 
 class Cipher
   include Keyable
