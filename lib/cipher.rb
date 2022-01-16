@@ -2,7 +2,13 @@ require 'keyable'
 
 class Cipher
   include Keyable
-  attr_reader  :message, :message_key, :message_date, :cipher_offsets, :cipher_keys, :cipher_shift, :character_set
+  attr_reader :message,
+              :message_key,
+              :message_date,
+              :cipher_offsets,
+              :cipher_keys,
+              :cipher_shift,
+              :character_set
 
   def initialize(message, message_key, message_date)
     @message = message.downcase
@@ -15,9 +21,6 @@ class Cipher
   end
 
   def cipher_message
-    # evaluate each character of message, if not character - shovel into new string
-    # if valid character - find index of character in character_set
-    # add shift to character index, shovel new character into string
     ciphertext = ""
     @message.each_char do |character|
       if character_set.include?(character) == false
@@ -29,5 +32,19 @@ class Cipher
       end
     end
     ciphertext
+  end
+
+  def decipher_message
+    deciphertext = ""
+    @message.each_char do |character|
+      if character_set.include?(character) == false
+        deciphertext << character #shovel into string
+      else
+        index_rotor = character_set.index(character) - @cipher_shift[0]
+        deciphertext << character_set.rotate(index_rotor).first #grab first value of new array
+        @cipher_shift.rotate!
+      end
+    end
+    deciphertext
   end
 end

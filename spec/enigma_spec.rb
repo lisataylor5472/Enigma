@@ -17,6 +17,16 @@ describe Enigma do
     }
     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
+
+  it `#decrypt a message with a key (uses today's date)` do
+    decryption =  {
+      decryption: "hello world",
+      key: "02715",
+      date: Date.today.strftime("%d%m%y")
+    }
+    encrypted = @enigma.encrypt("hello world", "02715")
+    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq(decryption)
+  end
 end
 
 describe Datable do
@@ -46,5 +56,20 @@ describe Keyable do
   it '#generate_msg_key - returns random key' do
     expect(@enigma.generate_msg_key(nil).class).to be String
     expect(@enigma.generate_msg_key(nil).length).to eq(5)
+  end
+end
+
+describe Enigma do
+  before(:each) do
+    @enigma = Enigma.new
+  end
+
+  it '#decrypt' do #FINAL GOAL
+    expected =  {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+    expect(@enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
   end
 end
