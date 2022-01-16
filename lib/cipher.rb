@@ -1,16 +1,14 @@
+require 'keyable'
+
 class Cipher
+  include Keyable
   attr_reader  :message, :message_key, :message_date, :cipher_offsets, :cipher_keys, :cipher_shift, :character_set
 
   def initialize(message, message_key, message_date)
     @message = message.downcase
     @message_key = message_key
     @message_date = message_date
-    @cipher_offsets = {
-                      "A" => offset_id[0].to_i,
-                      "B" => offset_id[1].to_i,
-                      "C" => offset_id[2].to_i,
-                      "D" => offset_id[3].to_i
-                      }
+    @cipher_offsets = generate_offset_keys(@message_date)
     @cipher_keys =    {
                       "A" => @message_key[0..1].to_i,
                       "B" => @message_key[1..2].to_i,
@@ -22,10 +20,10 @@ class Cipher
     @character_set = ("a".."z").to_a << " "
   end
 
-  def offset_id
-    (@message_date.to_i ** 2).to_s.slice!(-4..-1)
-    #returns a string for use in offsets method below
-  end
+  # def offset_id
+  #   (@message_date.to_i ** 2).to_s.slice!(-4..-1)
+  #   #returns a string for use in offsets method below
+  # end
 
   def shift
     @cipher_keys.merge(@cipher_offsets) {|key, keys, offsets| keys + offsets}.values

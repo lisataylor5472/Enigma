@@ -23,10 +23,6 @@ RSpec.describe Cipher do
     expect(cipher_2.message_key).to eq("02345")
   end
 
-  it '#offset_id' do
-    expect(@cipher.offset_id).to eq("1025")
-  end
-
   it '#cipher_offsets - attributes continued' do
     expected = {
                 "A" => 1,
