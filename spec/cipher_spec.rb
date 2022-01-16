@@ -92,7 +92,19 @@ describe Keyable do
 
   it '#generate_cipher_shift_keys' do
     expected = [3, 27, 73, 20]
-    expect(@cipher.generate_cipher_shift_keys).to eq(expected)
+    offsets = {
+              "A" => 1,
+              "B" => 0,
+              "C" => 2,
+              "D" => 5
+              }
+    keys =    {
+              "A" => 2,
+              "B" => 27,
+              "C" => 71,
+              "D" => 15
+              }
+    expect(@cipher.generate_cipher_shift_keys(offsets, keys)).to eq(expected)
   end
 end
 

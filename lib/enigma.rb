@@ -1,12 +1,10 @@
 require 'keyable'
 require 'datable'
 require 'cipher'
-# require 'cipherable'
 
 class Enigma
   include Keyable
   include Datable
-  # include Cipherable
 
   def encrypt(message, key = nil, date = nil)
     message_key = generate_msg_key(key)

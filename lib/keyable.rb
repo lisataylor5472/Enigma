@@ -30,4 +30,8 @@ module Keyable
                   }
     cipher_keys
   end
+
+  def generate_cipher_shift_keys(cipher_offsets, cipher_keys)
+    cipher_keys.merge(cipher_offsets) {|key, keys, offsets| keys + offsets}.values
+  end
 end
