@@ -18,8 +18,8 @@ RSpec.describe Cipher do
   end
 
   it 'has attributes - with leading zero' do
-    cipher_2 = Cipher.new("Hello World", "02345", "150122")
-    expect(cipher_2.message_date).to eq("150122")
+    cipher_2 = Cipher.new("Hello World", "02345", "010122")
+    expect(cipher_2.message_date).to eq("010122")
     expect(cipher_2.message_key).to eq("02345")
   end
 
@@ -37,7 +37,7 @@ RSpec.describe Cipher do
     expect(@cipher.cipher_offsets).to eq(expected)
   end
 
-  it '#assign_cipher_keys' do
+  it '#cipher_keys' do
     expected = {
                 "A" => 2,
                 "B" => 27,
@@ -64,9 +64,38 @@ RSpec.describe Cipher do
   it '#cipher_message' do
     cipher_1 = Cipher.new("What's UP?!","02715", "040895")
     cipher_2 = Cipher.new("TESTING$%!","02715", "040895")
-    cipher_3 = Cipher.new("this is a secret message","02715", "040895")
     expect(cipher_1.cipher_message).to eq("zhtm'v mi?!")
-    expect(cipher_2.cipher_message).to eq("wekmlnz$%!")
-    expect(cipher_3.cipher_message).to eq("whalciktd kyfrxmcmxlvazy")
+    expect(cipher_2.cipher_message[-1]).to eq("!")
+    expect(cipher_2.cipher_message[-1]).to eq("!")
+    expect(cipher_2.cipher_message[-2]).to eq("%")
+    expect(cipher_2.message[0..6]).to eq("testing")
+  end
+end
+
+describe Keyable do
+  before(:each) do
+    @cipher = Cipher.new("Hello, World","02715", "040895")
+  end
+
+  it '#generate_offset_keys' do
+    expected = {
+                "A" => 1,
+                "B" => 0,
+                "C" => 2,
+                "D" => 5
+                }
+    message_date = "040895"
+    expect(@cipher.generate_offset_keys(message_date)).to eq(expected)
+  end
+
+  it '#generate_cipher_keys' do
+    expected = {
+                "A" => 2,
+                "B" => 27,
+                "C" => 71,
+                "D" => 15
+                }
+    message_key = "02715"
+    expect(@cipher.generate_cipher_keys(message_key)).to eq(expected)
   end
 end

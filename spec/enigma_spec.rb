@@ -1,6 +1,6 @@
 require './spec_helper'
 
-RSpec.describe Enigma do
+describe Enigma do
   before(:each) do
     @enigma = Enigma.new
   end
@@ -14,7 +14,37 @@ RSpec.describe Enigma do
       encryption: "keder ohulw",
       key: "02715",
       date: "040895"
-      }
+    }
     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
+  end
+end
+
+describe Datable do
+  before(:each) do
+    @enigma = Enigma.new
+  end
+
+  it '#generate - returns given date' do
+    expect(@enigma.generate_msg_date("040895")).to eq("040895")
+  end
+
+  it '#generate - returns todays date' do
+    expect(@enigma.generate_msg_date(nil)).to eq(Date.today.strftime("%d%m%y"))
+  end
+end
+
+describe Keyable do
+  before(:each) do
+    @enigma = Enigma.new
+  end
+
+  it '#generate_msg_key - returns given key' do
+    expect(@enigma.generate_msg_key("12345")).to eq("12345")
+    expect(@enigma.generate_msg_key("00005")).to eq("00005")
+  end
+
+  it '#generate_msg_key - returns random key' do
+    expect(@enigma.generate_msg_key(nil).class).to be String
+    expect(@enigma.generate_msg_key(nil).length).to eq(5)
   end
 end
