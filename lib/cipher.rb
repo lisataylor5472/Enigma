@@ -11,12 +11,12 @@ class Cipher
                       "C" => offset_id[2].to_i,
                       "D" => offset_id[3].to_i
                       }
-    @cipher_keys = {
-                    "A" => @message_key[0..1].to_i,
-                    "B" => @message_key[1..2].to_i,
-                    "C" => @message_key[2..3].to_i,
-                    "D" => @message_key[3..4].to_i
-                    }
+    @cipher_keys =    {
+                      "A" => @message_key[0..1].to_i,
+                      "B" => @message_key[1..2].to_i,
+                      "C" => @message_key[2..3].to_i,
+                      "D" => @message_key[3..4].to_i
+                      }
     @cipher_shift = shift
     @index_rotor = 0
     @character_set = ("a".."z").to_a << " "
