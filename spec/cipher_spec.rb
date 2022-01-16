@@ -27,7 +27,7 @@ RSpec.describe Cipher do
     expect(@cipher.offset_id).to eq("1025")
   end
 
-  it '#assign_offsets' do
+  it '#cipher_offsets - attributes continued' do
     expected = {
                 "A" => 1,
                 "B" => 0,
@@ -37,7 +37,7 @@ RSpec.describe Cipher do
     expect(@cipher.cipher_offsets).to eq(expected)
   end
 
-  it '#cipher_keys' do
+  it '#cipher_keys - attributes continued' do
     expected = {
                 "A" => 2,
                 "B" => 27,
@@ -47,12 +47,7 @@ RSpec.describe Cipher do
     expect(@cipher.cipher_keys).to eq(expected)
   end
 
-  it '#shift' do
-    expected = [3, 27, 73, 20]
-    expect(@cipher.shift).to eq(expected)
-  end
-
-  it '@cipher_shift' do
+  it '@cipher_shift - attributes continued' do
     shifts = [3, 27, 73, 20]
     expect(@cipher.cipher_shift).to eq(shifts)
     expect(@cipher.cipher_shift.rotate!).to eq([27, 73, 20, 3])
@@ -97,5 +92,23 @@ describe Keyable do
                 }
     message_key = "02715"
     expect(@cipher.generate_cipher_keys(message_key)).to eq(expected)
+  end
+
+  it '#generate_shift_keys' do
+    expected = [3, 27, 73, 20]
+    expect(@cipher.generate_shift_keys).to eq(expected)
+  end
+end
+
+describe Cipherable do
+  before(:each) do
+    @cipher = Cipher.new("Hello, World","02715", "040895")
+  end
+
+  it '#generate_ciphertext' do
+    cipher_2 = Cipher.new("1a!","02715", "040895")
+    expect(cipher_2.generate_ciphertext[0]).to eq("1")
+    expect(cipher_2.generate_ciphertext[1]).to eq("a")
+    expect(cipher_2.generate_ciphertext[2]).to be("!")
   end
 end
