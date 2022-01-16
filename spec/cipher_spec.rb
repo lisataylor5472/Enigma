@@ -90,9 +90,9 @@ describe Keyable do
     expect(@cipher.generate_cipher_keys(message_key)).to eq(expected)
   end
 
-  it '#generate_shift_keys' do
+  it '#generate_cipher_shift_keys' do
     expected = [3, 27, 73, 20]
-    expect(@cipher.generate_shift_keys).to eq(expected)
+    expect(@cipher.generate_cipher_shift_keys).to eq(expected)
   end
 end
 
