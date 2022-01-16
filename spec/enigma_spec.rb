@@ -29,7 +29,7 @@ describe Enigma do
   end
 end
 
-describe Datable do
+describe DateGenerator do
   before(:each) do
     @enigma = Enigma.new
   end
