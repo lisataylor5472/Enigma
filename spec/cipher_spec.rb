@@ -23,10 +23,6 @@ RSpec.describe Cipher do
     expect(cipher_2.message_key).to eq("02345")
   end
 
-  it '#offset_id' do
-    expect(@cipher.offset_id).to eq("1025")
-  end
-
   it '#cipher_offsets - attributes continued' do
     expected = {
                 "A" => 1,
@@ -59,11 +55,15 @@ RSpec.describe Cipher do
   it '#cipher_message' do
     cipher_1 = Cipher.new("What's UP?!","02715", "040895")
     cipher_2 = Cipher.new("TESTING$%!","02715", "040895")
+    cipher_3 = Cipher.new("1a!","02715", "040895")
     expect(cipher_1.cipher_message).to eq("zhtm'v mi?!")
     expect(cipher_2.cipher_message[-1]).to eq("!")
     expect(cipher_2.cipher_message[-1]).to eq("!")
     expect(cipher_2.cipher_message[-2]).to eq("%")
     expect(cipher_2.message[0..6]).to eq("testing")
+    expect(cipher_3.cipher_message[0]).to eq("1")
+    expect(cipher_3.cipher_message[1]).to eq("a")
+    expect(cipher_3.cipher_message[2]).to eq("!")
   end
 end
 
@@ -94,21 +94,20 @@ describe Keyable do
     expect(@cipher.generate_cipher_keys(message_key)).to eq(expected)
   end
 
-  it '#generate_shift_keys' do
+  it '#generate_cipher_shift_keys' do
     expected = [3, 27, 73, 20]
-    expect(@cipher.generate_shift_keys).to eq(expected)
-  end
-end
-
-describe Cipherable do
-  before(:each) do
-    @cipher = Cipher.new("Hello, World","02715", "040895")
-  end
-
-  it '#generate_ciphertext' do
-    cipher_2 = Cipher.new("1a!","02715", "040895")
-    expect(cipher_2.generate_ciphertext[0]).to eq("1")
-    expect(cipher_2.generate_ciphertext[1]).to eq("a")
-    expect(cipher_2.generate_ciphertext[2]).to be("!")
+    offsets = {
+              "A" => 1,
+              "B" => 0,
+              "C" => 2,
+              "D" => 5
+              }
+    keys =    {
+              "A" => 2,
+              "B" => 27,
+              "C" => 71,
+              "D" => 15
+              }
+    expect(@cipher.generate_cipher_shift_keys(offsets, keys)).to eq(expected)
   end
 end
