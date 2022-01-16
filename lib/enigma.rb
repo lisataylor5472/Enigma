@@ -18,6 +18,11 @@ class Enigma
   end
 
   def decrypt(message, key, date)
-    
+    cipher = Cipher.new(message, key, date)
+    decrypted = {}
+    decrypted[:decryption] = cipher.decipher_message
+    decrypted[:key] = key
+    decrypted[:date] = date
+    decrypted
   end
 end
