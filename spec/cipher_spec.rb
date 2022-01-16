@@ -55,11 +55,15 @@ RSpec.describe Cipher do
   it '#cipher_message' do
     cipher_1 = Cipher.new("What's UP?!","02715", "040895")
     cipher_2 = Cipher.new("TESTING$%!","02715", "040895")
+    cipher_3 = Cipher.new("1a!","02715", "040895")
     expect(cipher_1.cipher_message).to eq("zhtm'v mi?!")
     expect(cipher_2.cipher_message[-1]).to eq("!")
     expect(cipher_2.cipher_message[-1]).to eq("!")
     expect(cipher_2.cipher_message[-2]).to eq("%")
     expect(cipher_2.message[0..6]).to eq("testing")
+    expect(cipher_3.cipher_message[0]).to eq("1")
+    expect(cipher_3.cipher_message[1]).to eq("a")
+    expect(cipher_3.cipher_message[2]).to eq("!")
   end
 end
 
@@ -105,18 +109,5 @@ describe Keyable do
               "D" => 15
               }
     expect(@cipher.generate_cipher_shift_keys(offsets, keys)).to eq(expected)
-  end
-end
-
-describe Cipherable do
-  before(:each) do
-    @cipher = Cipher.new("Hello, World","02715", "040895")
-  end
-
-  it '#generate_ciphertext' do
-    cipher_2 = Cipher.new("1a!","02715", "040895")
-    expect(cipher_2.generate_ciphertext[0]).to eq("1")
-    expect(cipher_2.generate_ciphertext[1]).to eq("a")
-    expect(cipher_2.generate_ciphertext[2]).to be("!")
   end
 end
