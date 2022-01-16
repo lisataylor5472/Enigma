@@ -20,4 +20,14 @@ module Keyable
   def offset_id(message_date)
     (message_date.to_i ** 2).to_s.slice!(-4..-1)
   end
+
+  def generate_cipher_keys(message_key)
+    cipher_keys = {
+                  "A" => message_key[0..1].to_i,
+                  "B" => message_key[1..2].to_i,
+                  "C" => message_key[2..3].to_i,
+                  "D" => message_key[3..4].to_i
+                  }
+    cipher_keys
+  end
 end

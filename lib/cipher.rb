@@ -9,12 +9,7 @@ class Cipher
     @message_key = message_key
     @message_date = message_date
     @cipher_offsets = generate_offset_keys(@message_date)
-    @cipher_keys =    {
-                      "A" => @message_key[0..1].to_i,
-                      "B" => @message_key[1..2].to_i,
-                      "C" => @message_key[2..3].to_i,
-                      "D" => @message_key[3..4].to_i
-                      }
+    @cipher_keys = generate_cipher_keys(@message_key)
     @cipher_shift = shift
     @index_rotor = 0
     @character_set = ("a".."z").to_a << " "
