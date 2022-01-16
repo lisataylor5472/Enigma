@@ -4,12 +4,14 @@ require_relative './datable'
 require_relative './cipher'
 
 enigma = Enigma.new
+key = ARGV[2]
+date = ARGV[3]
 
 file_reader = File.open(ARGV[0], "r")
 message = file_reader.read
 file_reader.close
 
-ciphertext = enigma.encrypt(message.chomp, ARGV[2] = nil, ARGV[3] = nil)
+ciphertext = enigma.encrypt(message.chomp, key, date)
 
 writer = File.open(ARGV[1], "w")
 writer.write(ciphertext[:encryption])
