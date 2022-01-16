@@ -1,6 +1,6 @@
 require './spec_helper'
 
-RSpec.describe Cipher do
+describe Cipher do
   before(:each) do
     @cipher = Cipher.new("Hello, World","02715", "040895")
   end
@@ -109,5 +109,15 @@ describe Keyable do
               "D" => 15
               }
     expect(@cipher.generate_cipher_shift_keys(offsets, keys)).to eq(expected)
+  end
+end
+
+describe Cipher do
+  before(:each) do
+    @cipher = Cipher.new("keder ohulw","02715", "040895")
+  end
+
+  it '#decipher_message' do
+    expect(@cipher.decipher_message).to eq("hello world")
   end
 end

@@ -48,3 +48,18 @@ describe Keyable do
     expect(@enigma.generate_msg_key(nil).length).to eq(5)
   end
 end
+
+describe Enigma do
+  before(:each) do
+    @enigma = Enigma.new
+  end
+
+  it '#decrypt' do #FINAL GOAL
+    expected =  {
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
+    }
+    expect(@enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
+  end
+end
