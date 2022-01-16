@@ -17,6 +17,16 @@ describe Enigma do
     }
     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
+
+  it `#decrypt a message with a key (uses today's date)` do
+    decryption =  {
+      decryption: "hello world",
+      key: "02715",
+      date: Date.today.strftime("%d%m%y")
+    }
+    encrypted = @enigma.encrypt("hello world", "02715")
+    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq(decryption)
+  end
 end
 
 describe Datable do

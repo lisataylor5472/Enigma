@@ -17,8 +17,9 @@ class Enigma
     encrypted
   end
 
-  def decrypt(message, key, date)
-    cipher = Cipher.new(message, key, date)
+  def decrypt(ciphertext, key, date = nil)
+    date = generate_msg_date(date)
+    cipher = Cipher.new(ciphertext, key, date)
     decrypted = {}
     decrypted[:decryption] = cipher.decipher_message
     decrypted[:key] = key
