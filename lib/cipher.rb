@@ -3,8 +3,6 @@ require_relative 'keyable'
 class Cipher
   include Keyable
   attr_reader :message,
-              :message_key,
-              :message_date,
               :cipher_offsets,
               :cipher_keys,
               :cipher_shift,
