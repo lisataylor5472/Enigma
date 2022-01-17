@@ -37,6 +37,7 @@ encryption and decryption of a message contained in `message.txt`.
   - [x] `encrypt` and `decrypt` CLI successfully implemented
 
   #### Notes:
+ I attempted to dig into the crack method - but pretty quickly realized that was a massive undertaking. All of that code lives on a separate branch and will not be included with my project submission.
 
   ### Object Oriented Programming
   - [x] Project is broken into logical components - appropriately encapsulated
@@ -46,7 +47,6 @@ encryption and decryption of a message contained in `message.txt`.
       - Enigma Class - initiates the encrypt and decrypt methods / mechanisms
       - Cipher Class - houses cipher translation info as attributes - puts them into action in cipher and decipher methods.
       - Keyable Module - generates keys as needed within the machine - applies to Enigma and Cipher Classes
-      - Datable Module - generates date key
 
   #### Notes:
   I went in circles in how I wanted to organize this project. I began by mapping out the classes and modules I thought I would be needing. As the project progressed though I became so much more aware of how this machine is actually supposed to function. I did more research and latched on to the concept of the 'cipher' - it reminded me of a decoder ring - and I wanted to create a class within my code that emulated that same concept - a little guide showing the translation sequence.
@@ -58,6 +58,7 @@ encryption and decryption of a message contained in `message.txt`.
   - [x] Implemented multiple hashes in a logical manner - seen in `keyable` module and `encrypt` and `decrypt` methods.
 
   #### Notes:
+  Please let me know if there are any glaring formatting errors - I believe I am following proper indentation.
 
   ### Test Driven Development
   - [x] Every class has a spec file and every method within a class is completely
@@ -68,7 +69,6 @@ encryption and decryption of a message contained in `message.txt`.
     - [x] special characters outside of the character set
     - [x] uppercased messages
     - [x] shift amounts greater than character set length
-
 
   - [x] Tests were written first before implementation of code
   - [x] `Simplecov` shows coverage over 99% coverage
@@ -82,5 +82,3 @@ encryption and decryption of a message contained in `message.txt`.
 
   #### Notes:
   It is awkward merging your own pull requests - I had a bit of trouble getting into the flow. I found pull requests and merging made more sense to me as part of my workflow with Futbol because other folks needed access to my updates. Here I had a little difficulty getting into that headspace, but I tried to correct that when I realized I was not doing a very good job.
-
-
