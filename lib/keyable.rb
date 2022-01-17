@@ -5,13 +5,8 @@ module Keyable
     5.times.map{rand(5)}.join
   end
 
-  def generate_msg_date(date)
-    if date == nil
-      today = Date.today
-      today.strftime("%d%m%y") #"DDMMYY"
-    else
-      date
-    end
+  def generate_msg_date
+    Date.today.strftime("%d%m%y") #"DDMMYY"
   end
 
   def generate_offset_keys(message_date)

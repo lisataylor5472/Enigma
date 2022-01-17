@@ -35,17 +35,17 @@ describe Keyable do
   end
 
   it '#generate - returns given date' do
-    expect(@enigma.encrypt("Hello, World","12345", "040895")).to eq("040895")
+    expect(@enigma.encrypt("Hello, World","12345", "040895").values[2]).to eq("040895")
   end
 
   it '#generate - returns todays date' do
-    expect(@enigma.encrypt("Hello, World","12345")).to eq(Date.today.strftime("%d%m%y"))
+    expect(@enigma.encrypt("Hello, World","12345").values[2]).to eq(Date.today.strftime("%d%m%y"))
   end
 
   it '#generate_msg_key - returns given key' do
 
-    expect(@enigma.encrypt("Hello, World","12345", "040895").values).to include("12345")
-    expect(@enigma.encrypt("Hello, World","00005", "040895").values).to include("00005")
+    expect(@enigma.encrypt("Hello, World","12345", "040895").values[1]).to eq("12345")
+    expect(@enigma.encrypt("Hello, World","00005", "040895").values[1]).to eq("00005")
   end
 
   it '#generate_msg_key - returns random key' do
