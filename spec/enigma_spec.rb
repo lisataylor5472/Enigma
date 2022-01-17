@@ -29,23 +29,17 @@ describe Enigma do
   end
 end
 
-describe Datable do
+describe Keyable do
   before(:each) do
     @enigma = Enigma.new
   end
 
   it '#generate - returns given date' do
-    expect(@enigma.generate_msg_date("040895")).to eq("040895")
+    expect(@enigma.encrypt("Hello, World","12345", "040895")).to eq("040895")
   end
 
   it '#generate - returns todays date' do
-    expect(@enigma.generate_msg_date(nil)).to eq(Date.today.strftime("%d%m%y"))
-  end
-end
-
-describe Keyable do
-  before(:each) do
-    @enigma = Enigma.new
+    expect(@enigma.encrypt("Hello, World","12345")).to eq(Date.today.strftime("%d%m%y"))
   end
 
   it '#generate_msg_key - returns given key' do

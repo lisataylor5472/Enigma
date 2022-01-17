@@ -1,6 +1,17 @@
+require 'date'
+
 module Keyable
   def generate_msg_key
     5.times.map{rand(5)}.join
+  end
+
+  def generate_msg_date(date)
+    if date == nil
+      today = Date.today
+      today.strftime("%d%m%y") #"DDMMYY"
+    else
+      date
+    end
   end
 
   def generate_offset_keys(message_date)
