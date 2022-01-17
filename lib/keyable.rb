@@ -10,12 +10,11 @@ module Keyable
   end
 
   def generate_offset_keys(message_date)
-    offsets = {
-              "A" => offset_id(message_date)[0].to_i,
-              "B" => offset_id(message_date)[1].to_i,
-              "C" => offset_id(message_date)[2].to_i,
-              "D" => offset_id(message_date)[3].to_i
-              }
+    offsets = {}
+    offsets["A"] = offset_id(message_date)[0].to_i
+    offsets["B"] = offset_id(message_date)[1].to_i
+    offsets["C"] = offset_id(message_date)[2].to_i
+    offsets["D"] = offset_id(message_date)[3].to_i
     offsets
   end
 
@@ -24,12 +23,11 @@ module Keyable
   end
 
   def generate_cipher_keys(message_key)
-    cipher_keys = {
-                  "A" => message_key[0..1].to_i,
-                  "B" => message_key[1..2].to_i,
-                  "C" => message_key[2..3].to_i,
-                  "D" => message_key[3..4].to_i
-                  }
+    cipher_keys = {}
+    cipher_keys["A"] = message_key[0..1].to_i
+    cipher_keys["B"] = message_key[1..2].to_i
+    cipher_keys["C"] = message_key[2..3].to_i
+    cipher_keys["D"] = message_key[3..4].to_i      
     cipher_keys
   end
 
