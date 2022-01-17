@@ -11,16 +11,7 @@ describe Cipher do
 
   it 'has attributes' do
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    expect(@cipher.message_date).to eq("040895")
-    expect(@cipher.message_key).to eq("02715")
-    expect(@cipher.message).to eq("hello, world")
     expect(@cipher.character_set).to eq(expected)
-  end
-
-  it 'has attributes - with leading zero' do
-    cipher_2 = Cipher.new("Hello World", "02345", "010122")
-    expect(cipher_2.message_date).to eq("010122")
-    expect(cipher_2.message_key).to eq("02345")
   end
 
   it '#cipher_offsets - attributes continued' do
@@ -33,6 +24,17 @@ describe Cipher do
     expect(@cipher.cipher_offsets).to eq(expected)
   end
 
+  it '#cipher_offsets - attributes continued' do
+    cipher_1 = Cipher.new("Hello, World","63112", "020222")
+    expected = {
+                "A" => 9,
+                "B" => 2,
+                "C" => 8,
+                "D" => 4
+              }
+    expect(cipher_1.cipher_offsets).to eq(expected)
+  end
+
   it '#cipher_keys - attributes continued' do
     expected = {
                 "A" => 2,
@@ -41,6 +43,17 @@ describe Cipher do
                 "D" => 15
               }
     expect(@cipher.cipher_keys).to eq(expected)
+  end
+
+  it '#cipher_keys - attributes continued' do
+    cipher_1 = Cipher.new("Hello, World","01010", "020222")
+    expected = {
+                "A" => 1,
+                "B" => 10,
+                "C" => 1,
+                "D" => 10
+              }
+    expect(cipher_1.cipher_keys).to eq(expected)
   end
 
   it '@cipher_shift - attributes continued' do
@@ -119,5 +132,10 @@ describe Cipher do
 
   it '#decipher_message' do
     expect(@cipher.decipher_message).to eq("hello world")
+  end
+
+  it '#decipher_message' do
+    @cipher = Cipher.new("keder, ohulw","02715", "040895")
+    expect(@cipher.decipher_message).to eq("hello, world")
   end
 end

@@ -29,33 +29,28 @@ describe Enigma do
   end
 end
 
-describe Datable do
-  before(:each) do
-    @enigma = Enigma.new
-  end
-
-  it '#generate - returns given date' do
-    expect(@enigma.generate_msg_date("040895")).to eq("040895")
-  end
-
-  it '#generate - returns todays date' do
-    expect(@enigma.generate_msg_date(nil)).to eq(Date.today.strftime("%d%m%y"))
-  end
-end
-
 describe Keyable do
   before(:each) do
     @enigma = Enigma.new
   end
 
+  it '#generate - returns given date' do
+    expect(@enigma.encrypt("Hello, World","12345", "040895").values[2]).to eq("040895")
+  end
+
+  it '#generate - returns todays date' do
+    expect(@enigma.encrypt("Hello, World","12345").values[2]).to eq(Date.today.strftime("%d%m%y"))
+  end
+
   it '#generate_msg_key - returns given key' do
-    expect(@enigma.generate_msg_key("12345")).to eq("12345")
-    expect(@enigma.generate_msg_key("00005")).to eq("00005")
+
+    expect(@enigma.encrypt("Hello, World","12345", "040895").values[1]).to eq("12345")
+    expect(@enigma.encrypt("Hello, World","00005", "040895").values[1]).to eq("00005")
   end
 
   it '#generate_msg_key - returns random key' do
-    expect(@enigma.generate_msg_key(nil).class).to be String
-    expect(@enigma.generate_msg_key(nil).length).to eq(5)
+    expect(@enigma.encrypt("Hello, World").values[1].class).to be String
+    expect(@enigma.encrypt("Hello, World").values[1].length).to eq(5)
   end
 end
 
