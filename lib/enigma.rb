@@ -4,21 +4,25 @@ require_relative 'cipher'
 class Enigma
   include Keyable
 
-  def encrypt(message, key = generate_msg_key, date = generate_msg_date)
-    cipher = Cipher.new(message, key, date)
+  def encrypt(message, key = nil, date = nil)
+    msg_key = generate_msg_key(key)
+    msg_date = generate_msg_date(date)
+    cipher = Cipher.new(message, msg_key, msg_date)
     encrypted = {}
     encrypted[:encryption] = cipher.cipher_message
-    encrypted[:key] = key
-    encrypted[:date] = date
+    encrypted[:key] = msg_key
+    encrypted[:date] = msg_date
     encrypted
   end
 
-  def decrypt(ciphertext, key, date = generate_msg_date)
-    cipher = Cipher.new(ciphertext, key, date)
+  def decrypt(ciphertext, key = nil, date = nil)
+    msg_key = generate_msg_key(key)
+    msg_date = generate_msg_date(date)
+    cipher = Cipher.new(ciphertext, msg_key, msg_date)
     decrypted = {}
     decrypted[:decryption] = cipher.decipher_message
-    decrypted[:key] = key
-    decrypted[:date] = date
+    decrypted[:key] = msg_key
+    decrypted[:date] = msg_date
     decrypted
   end
 end

@@ -1,12 +1,20 @@
 require 'date'
 
 module Keyable
-  def generate_msg_key
-    5.times.map{rand(5)}.join
+  def generate_msg_key(key)
+    if key == nil
+      @key = 5.times.map{rand(5)}.join
+    else
+      key
+    end
   end
 
-  def generate_msg_date
-    Date.today.strftime("%d%m%y") #"DDMMYY"
+  def generate_msg_date(date)
+    if date == nil
+      Date.today.strftime("%d%m%y") #"DDMMYY"
+    else
+      date
+    end
   end
 
   def generate_offset_keys(message_date)
@@ -27,7 +35,7 @@ module Keyable
     cipher_keys["A"] = message_key[0..1].to_i
     cipher_keys["B"] = message_key[1..2].to_i
     cipher_keys["C"] = message_key[2..3].to_i
-    cipher_keys["D"] = message_key[3..4].to_i      
+    cipher_keys["D"] = message_key[3..4].to_i
     cipher_keys
   end
 

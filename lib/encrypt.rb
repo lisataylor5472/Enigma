@@ -1,5 +1,14 @@
 require_relative './enigma'
 
+if ARGV.count < 2
+  puts " ==============="
+  puts "| Invalid input |"
+  puts " ==============="
+  puts "Please include `message.txt` `encrypted.txt` for file reader."
+  puts "If available, please also include message `key` and message `date`"
+  exit
+end
+
 enigma = Enigma.new
 key = ARGV[2]
 date = ARGV[3]
