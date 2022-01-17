@@ -1,1 +1,1 @@
-This is a secret message! Suckers 123456
+"Type your secret message here! It will pass through the Enigma machine."
