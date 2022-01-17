@@ -83,4 +83,4 @@ encryption and decryption of a message contained in `message.txt`.
   #### Notes:
   It is awkward merging your own pull requests - I had a bit of trouble getting into the flow. I found pull requests and merging made more sense to me as part of my workflow with Futbol because other folks needed access to my updates. Here I had a little difficulty getting into that headspace, but I tried to correct that when I realized I was not doing a very good job.
 
-  ### Additional Reflection / Notes
+
